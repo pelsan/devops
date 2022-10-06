@@ -68,7 +68,7 @@ public class BusyFlightsApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsString(requestBFR)))
 				.andExpect(status().is4xxClientError())
-				.andExpect(jsonPath("$.detail", is("Format date incorrect")));
+				.andExpect(jsonPath("$.detail", is("Format date incorrectX")));
 	}
 	@Test
 	public void getBusyFligthsIATACodeError() throws Exception {
@@ -83,7 +83,7 @@ public class BusyFlightsApplicationTests {
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(objectMapper.writeValueAsString(requestBFR)))
 				.andExpect(status().is4xxClientError())
-				.andExpect(jsonPath("$.detail", is("IATA CODE length Incorrect, it has to be 3 Letters")));
+				.andExpect(jsonPath("$.detail", is("IATA CODE length Incorrect, it has to be 3 LettersX")));
 	}
 
 	@Mock
