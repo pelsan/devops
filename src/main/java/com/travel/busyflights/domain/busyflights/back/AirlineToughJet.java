@@ -49,9 +49,7 @@ public class AirlineToughJet implements Airline{
 
             WebClient.ResponseSpec myRespo = webClient.post().uri("http://localhost:8080/toughjetapi/fligths").bodyValue(myRequest).retrieve();
             fligths = (List<T>) myRespo.bodyToFlux(Object.class).collectList().block();
-           // System.out.println(fligths.get(0).toString());
         } catch (Exception e) {
-            System.out.println(e);
             return fligths;
         }
         return fligths;

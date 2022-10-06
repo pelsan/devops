@@ -38,7 +38,7 @@ public class BusyFlightsController {
         | departureDate             | ISO_DATE_TIME format |
         | arrivalDate               | ISO_DATE_TIME format |
          */
-        List<BusyFlightsResponse> myList = new ArrayList<BusyFlightsResponse>();
+        List<BusyFlightsResponse> myList;
         // Validate Request
         int iPassengers = myRequest.getNumberOfPassengers();
         if (iPassengers <1 || iPassengers > 4){

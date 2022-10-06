@@ -42,14 +42,6 @@ public class AirlineCrazyAir implements Airline {
                     connection.addHandlerLast(new WriteTimeoutHandler(5000, TimeUnit.MILLISECONDS));
                 });
         try {
-            /*
-            WebClient client = webClientBuilder
-                    .clientConnector(new ReactorClientHttpConnector(HttpClient.from(tcpClient)))
-                    .baseUrl("http://localhost:8080/crazyairapi")
-                    .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE).defaultUriVariables(
-                            Collections.singletonMap("url", "http://localhost:8080/crazyairapi"))
-                    .build();
-             */
             WebClient webClient = WebClient.builder()
                     .baseUrl("http://localhost:8080/crazyairapi")
                     .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
@@ -59,10 +51,7 @@ public class AirlineCrazyAir implements Airline {
 
             WebClient.ResponseSpec myRespo = webClient.post().uri("http://localhost:8080/crazyairapi/fligths").bodyValue(myRequest).retrieve();
             fligths = (List<T>) myRespo.bodyToFlux(Object.class).collectList().block();
-            //System.out.println(fligths.get(0).toString());
-
         } catch (Exception e) {
-            System.out.println(e);
             return fligths;
         }
         return fligths;
